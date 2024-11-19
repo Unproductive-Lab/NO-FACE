@@ -8,7 +8,11 @@ def makeface(incode : bytes):
     forehead = incode[:len(incode)//2]
     face = chin + forehead
     face = FACE.join(face[i:i+1] for i in range(0, len(face), 1)).encode("utf-8") 
-    face = bin(int.from_bytes(face,byteorder=sys.byteorder) >> BYTESHIFVALUE) 
+
+    face = bin(int.from_bytes(face,byteorder=sys.byteorder)) 
+    #face = bin(int.from_bytes(face,byteorder=sys.byteorder) >> BYTESHIFVALUE)  
+    # ^^^ Этот вариант безопаснее, но может подхавать некоторые буквы. Используйте, если для вас безопасность важнее точности
+
     face = (FACE * BYTESHIFVALUE) + face
     return face
 
@@ -26,7 +30,11 @@ def breakface(S, sub):
 def deface(encoded : str):
     c = encoded.count(FACE)
     encoded = encoded[c*len(FACE):]
-    en = int(encoded,2) << c
+
+    en = int(encoded,2)
+    #en = int(encoded,2) << c
+    # ^^^ Этот вариант безопаснее, но может подхавать некоторые буквы. Используйте, если для вас безопасность важнее точности
+    
     enc = en.to_bytes(len(encoded),byteorder=sys.byteorder) 
     enco = enc.decode("utf-8") 
     encod = breakface(enco,FACE).split('\x00', 1)[0]
@@ -37,20 +45,25 @@ def deface(encoded : str):
         chin = encod[len(encod)//2:]
         forehead = encod[:len(encod)//2]
     face = chin + forehead
-    print("Итог расшифровки : "+face)
+    return face
     
-
-if __name__ == "__main__":
-    result = ''
+    
+def techdemo():
     ch = input(" 1. Закодировать строку \n 2. Раскодировать строку \n 3. Моментальный тест \n >  ")
     if ch == "3":
         incode = input("Введите кодируемую строку : ").lower()
         face = makeface(incode)
-        deface(face)
+        a = deface(face)
+        print("Итог расшифровки : "+a)
     if ch == "2":
         incode = input("Введите строку : ").lower()
-        deface(incode)
+        a = deface(face)
+        print("Итог расшифровки : "+a)
     if ch == "1":
         incode = input("Введите кодируемую строку : ").lower()
         face = makeface(incode)
         print(face)
+
+if __name__ == "__main__":
+    result = ''
+    techdemo()
