@@ -1,6 +1,4 @@
 
-## Badges
-
 ![STATIC](https://img.shields.io/badge/No_Face-No_Face-gre
 ) ![STATIC](https://img.shields.io/badge/No_Face-No_Face-blue
 ) ![STATIC](https://img.shields.io/badge/No_Face-No_Face-black
