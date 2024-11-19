@@ -9,7 +9,7 @@ def makeface(incode : bytes):
     face = chin + forehead
     face = 'NOFACE'.join(face[i:i+1] for i in range(0, len(face), 1)).encode("utf-8") 
     face = bin(int.from_bytes(face,byteorder=sys.byteorder) >> BYTESHIFVALUE) 
-    face = FACE *BYTESHIFVALUE + face
+    face = (FACE *BYTESHIFVALUE) + face
     return face
 
 def breakface(S, sub):
