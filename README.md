@@ -12,7 +12,7 @@ NOFACENOFACENOFACENOFACENOFACE:NOFАCENOFACENOFАCENOFАCENOFАCENOFACENOFACENOF
 ```
 -- Слово "Привет", зашифрованное NO FACE
 
-**NOFACE** - Алгоритм симметричного шифрования на Python. <br>
+**NOFACE** - Алгоритм симметричного шифрования на Python. <br> <br>
 Основная задача NOFACE заключается не в непробиваемой безопасности, а в максимальной нечитаемости содержимого непосвящённым человеком.
 
 ## Юседж
