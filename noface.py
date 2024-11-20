@@ -18,7 +18,7 @@ def makeface(incode : bytes):
         if face[k] == '0':
             res = res + 'NOFACE'
         elif face[k] == '1':
-            res = res + 'NOFACE!'
+            res = res + 'NOFАCE'
         elif face[k] == 'b':
             res = res + ':'
     face = res
@@ -38,11 +38,11 @@ def breakface(S, sub):
     return S
 
 def deface(encoded : str):
-    
+
     c = encoded.rpartition(':')[0].count(FACE)
 
     encoded = encoded[encoded.find(":")+1:]
-    encoded = encoded.replace("NOFACE!","1")
+    encoded = encoded.replace("NOFАCE","1")
     encoded = encoded.replace("NOFACE","0")
     en = int(encoded,2)
     #en = int(encoded,2) << c
