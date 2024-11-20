@@ -4,6 +4,7 @@ BYTESHIFVALUE = 4
 FACE = "NOFACE"
 #Просто договоритесь с получателем об определенных настойках
 def makeface(incode : bytes):
+    res = ''
     chin = incode[len(incode)//2:]
     forehead = incode[:len(incode)//2]
     face = chin + forehead
@@ -12,6 +13,15 @@ def makeface(incode : bytes):
     face = bin(int.from_bytes(face,byteorder=sys.byteorder)) 
     #face = bin(int.from_bytes(face,byteorder=sys.byteorder) >> BYTESHIFVALUE)  
     # ^^^ Этот вариант безопаснее, но может подхавать некоторые буквы. Используйте, если для вас безопасность важнее точности
+
+    for k in range(len(face)):
+        if face[k] == '0':
+            res = res + 'NOFACE'
+        elif face[k] == '1':
+            res = res + 'NOFACE!'
+        elif face[k] == 'b':
+            res = res + ':'
+    face = res
 
     face = (FACE * BYTESHIFVALUE) + face
     return face
@@ -28,9 +38,12 @@ def breakface(S, sub):
     return S
 
 def deface(encoded : str):
-    c = encoded.count(FACE)
-    encoded = encoded[c*len(FACE):]
+    
+    c = encoded.rpartition(':')[0].count(FACE)
 
+    encoded = encoded[encoded.find(":")+1:]
+    encoded = encoded.replace("NOFACE!","1")
+    encoded = encoded.replace("NOFACE","0")
     en = int(encoded,2)
     #en = int(encoded,2) << c
     # ^^^ Этот вариант безопаснее, но может подхавать некоторые буквы. Используйте, если для вас безопасность важнее точности
@@ -57,7 +70,7 @@ def techdemo():
         print("Итог расшифровки : "+a)
     if ch == "2":
         incode = input("Введите строку : ").lower()
-        a = deface(face)
+        a = deface(incode)
         print("Итог расшифровки : "+a)
     if ch == "1":
         incode = input("Введите кодируемую строку : ").lower()
