@@ -4,7 +4,7 @@
 ) ![STATIC](https://img.shields.io/badge/No_Face-No_Face-black
 )
 
-**Пакет уже доступен на https://pypi.org/project/noface/1.3.0/**
+**Пакет уже доступен на [Pypi (и даже можно скачать в pip)](https://pypi.org/project/noface/)**
 
 # NOFACE
 ```
