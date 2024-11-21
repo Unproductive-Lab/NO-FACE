@@ -47,7 +47,7 @@ FACE = "NOFACE"
   git clone https://github.com/Unproductive-Lab/NO-FACE
 ```
 
-Если склонировал, выыкинь в корневую папку проекта. <br> Пропиши
+Если склонировал, выкинь в корневую папку проекта. <br> Пропиши
 
 ```
   from noface.py import *
