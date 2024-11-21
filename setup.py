@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='noface',
-    version='1.3.0',
+    version='1.5.0',
     description='a cypher algo by Unproductive',
     packages=['noface'],
     classifiers=['Programming Language :: Python :: 3.11'],
