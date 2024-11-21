@@ -37,12 +37,17 @@ FACE = "NOFACE"
 ## Встраивание
 
 Укради код
+```
+  pip install noface
+```
+
+ИЛИ
 
 ```bash
   git clone https://github.com/Unproductive-Lab/NO-FACE
 ```
 
-Выкинь в корневую папку проекта и пропиши
+Если склонировал, выыкинь в корневую папку проекта. <br> Пропиши
 
 ```
   from noface.py import *
