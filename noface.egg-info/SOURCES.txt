@@ -1,0 +1,9 @@
+LICENSE.txt
+README.md
+setup.py
+noface/__init__.py
+noface/noface.py
+noface.egg-info/PKG-INFO
+noface.egg-info/SOURCES.txt
+noface.egg-info/dependency_links.txt
+noface.egg-info/top_level.txt
