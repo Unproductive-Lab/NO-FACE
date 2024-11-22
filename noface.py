@@ -69,7 +69,7 @@ def techdemo():
         a = deface(face)
         print("Итог расшифровки : "+a)
     if ch == "2":
-        incode = input("Введите строку : ").lower()
+        incode = input("Введите строку : ")
         a = deface(incode)
         print("Итог расшифровки : "+a)
     if ch == "1":
