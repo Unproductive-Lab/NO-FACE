@@ -77,6 +77,7 @@ def techdemo():
         face = makeface(incode)
         print(face)
 
+
 if __name__ == "__main__":
     result = ''
     techdemo()
