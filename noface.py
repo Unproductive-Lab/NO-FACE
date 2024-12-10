@@ -9,7 +9,6 @@ def makeface(incode : bytes):
     forehead = incode[:len(incode)//2]
     face = chin + forehead
     face = FACE.join(face[i:i+1] for i in range(0, len(face), 1)).encode("utf-8") 
-    # TODO: Make something more complicated
     face = bin(int.from_bytes(face,byteorder=sys.byteorder)) 
     #face = bin(int.from_bytes(face,byteorder=sys.byteorder) >> BYTESHIFVALUE)  
     # ^^^ Этот вариант безопаснее, но может подхавать некоторые буквы. Используйте, если для вас безопасность важнее точности
