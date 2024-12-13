@@ -12,7 +12,6 @@ def makeface(incode : bytes):
     face = bin(int.from_bytes(face,byteorder=sys.byteorder))  
     #face = bin(int.from_bytes(face,byteorder=sys.byteorder) >> BYTESHIFVALUE)  
     # ^^^ Этот вариант безопаснее, но может подхавать некоторые буквы. Используйте, если для вас безопасность важнее точности
-
     for k in range(len(face)):
         if face[k] == '0':
             res = res + 'NOFACE'
@@ -21,7 +20,6 @@ def makeface(incode : bytes):
         elif face[k] == 'b':
             res = res + ':'
     face = res
-
     face = (FACE * BYTESHIFVALUE) + face
     return face
 
@@ -37,16 +35,13 @@ def breakface(S, sub):
     return S
 
 def deface(encoded : str):
-
     c = encoded.rpartition(':')[0].count(FACE)
-
     encoded = encoded[encoded.find(":")+1:]
     encoded = encoded.replace("NOFАCE","1")
     encoded = encoded.replace("NOFACE","0")
     en = int(encoded,2)
     #en = int(encoded,2) << c
     # ^^^ Этот вариант безопаснее, но может подхавать некоторые буквы. Используйте, если для вас безопасность важнее точности
-    
     enc = en.to_bytes(len(encoded),byteorder=sys.byteorder) 
     enco = enc.decode("utf-8") 
     encod = breakface(enco,FACE).split('\x00', 1)[0]
