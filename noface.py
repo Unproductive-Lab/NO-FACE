@@ -53,7 +53,6 @@ def deface(encoded : str):
     face = chin + forehead
     return face
 
-
 def techdemo():
     ch = input(" 1. Закодировать строку \n 2. Раскодировать строку \n 3. Моментальный тест \n >  ")
     if ch == "3":
