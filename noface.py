@@ -1,4 +1,3 @@
-import sys
 # Вы можете хотеть изменить переменные ниже, т.к. они являются важной частью достижения сохранности сообщения
 BYTESHIFVALUE = 4
 FACE = "NOFACE"
@@ -8,9 +7,9 @@ def makeface(incode : bytes):
     chin = incode[len(incode)//2:]
     forehead = incode[:len(incode)//2]
     face = chin + forehead
-    face = FACE.join(face[i:i+1] for i in range(0, len(face), 1)).encode("utf-8") 
-    face = bin(int.from_bytes(face,byteorder=sys.byteorder))  
-    #face = bin(int.from_bytes(face,byteorder=sys.byteorder) >> BYTESHIFVALUE)  
+    face = FACE.join(face[i:i+1] for i in range(0, len(face), 1)).encode("utf-8")
+    face = bin(int.from_bytes(face,byteorder="little"))
+    #face = bin(int.from_bytes(face,byteorder=sys.byteorder) >> BYTESHIFVALUE)
     # ^^^ Этот вариант безопаснее, но может подхавать некоторые буквы. Используйте, если для вас безопасность важнее точности
     for k in range(len(face)):
         if face[k] == '0':
@@ -42,8 +41,8 @@ def deface(encoded : str):
     en = int(encoded,2)
     #en = int(encoded,2) << c
     # ^^^ Этот вариант безопаснее, но может подхавать некоторые буквы. Используйте, если для вас безопасность важнее точности
-    enc = en.to_bytes(len(encoded),byteorder=sys.byteorder) 
-    enco = enc.decode("utf-8") 
+    enc = en.to_bytes(len(encoded),byteorder="little")
+    enco = enc.decode("utf-8")
     encod = breakface(enco,FACE).split('\x00', 1)[0]
     if len(encod) % 2 != 0:
         chin = encod[(len(encod)//2)+1:]
@@ -53,8 +52,8 @@ def deface(encoded : str):
         forehead = encod[:len(encod)//2]
     face = chin + forehead
     return face
-    
-    
+
+
 def techdemo():
     ch = input(" 1. Закодировать строку \n 2. Раскодировать строку \n 3. Моментальный тест \n >  ")
     if ch == "3":
